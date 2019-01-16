@@ -1,0 +1,85 @@
+.nextapp-sidepanel {
+    width: 100%;
+    overflow: hidden;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+
+    .sidepanel-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: #000;
+        opacity: 0;
+        // display: none !important;
+        z-index: -1;
+        transition: all 0.3s 0.05s ease;
+    }
+
+    .sidepanel-container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 25%;
+        background-color: #FFF;
+        z-index: -1;
+        transform: translateX(130%);
+        transition: all 0.3s ease;
+        box-shadow: -3px 0px 6px 0px rgba(0,0,0,0.3);
+    }
+
+    .sidepanel-content {
+        overflow-x: scroll;
+
+        // nav links
+        nav {
+            margin-top: $topnav-height;
+            display: block;
+            border-top: 1px solid #EEE;
+            border-bottom: 1px solid #EEE;
+
+            a.nav-link {
+                &:first-child {
+                    border: none;
+                }
+
+                border-top: 1px solid #EEE;
+                padding: 15px 20px;
+                display: block;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    background: #EEE;
+                }
+
+                &,
+                &:hover,
+                &:focus,
+                &:active {
+                    color: #000;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+// visibility by body
+body.sidepanel-visible {
+    overflow: hidden;
+
+    .sidepanel-overlay {
+        opacity: 0.4;
+        transition: opacity 0.3s ease;
+        z-index: 10000000;
+    }
+    .sidepanel-container {
+        transform: translateX(0);
+        transition: transform 0.3s ease;
+        z-index: 10000001;
+    }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+	<title>Nexapp</title>
+
+	<!-- css -->
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<!-- topbar -->
+	<div class="nexapp-topnav">
+		<span class="topnav-title">Nexapp</span>
+		<a href="#" class="topnav-bars">B</a>
+	</div>
+
+	<!-- side panel -->
+	<div class="nextapp-sidepanel hidden">
+		<!-- overlay -->
+		<div class="sidepanel-overlay"></div>
+		<!-- content -->
+		<div class="sidepanel-container">
+			<div class="sidepanel-content">
+				<nav>
+					<a href="#/" class="nav-link">Home</a>
+					<a href="#/hola" class="nav-link">Hola</a>
+					<a href="#/chau" class="nav-link">Chau</a>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<!-- load pages -->
+	<page src="pages/home.html"></page>
+	<page src="pages/hola.html"></page>
+	<page src="pages/chau.html"></page>
+
+	<!-- toast -->
+	<div class="nextapp-toast">
+		<div class="toast-icon"></div>
+		<div class="toast-text"></div>
+	</div>
+
+	<!-- nexapp -->
+	<script src="js/core/jquery.js"></script>
+	<script src="js/core/router.js"></script>
+	<script src="js/core/nexapp.js"></script>
+	<!-- local -->
+	<script src="js/index.js"></script>
+	<script src="js/routes.js"></script>
+</body>
+</html>

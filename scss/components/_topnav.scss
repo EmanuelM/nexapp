@@ -1,0 +1,23 @@
+div.nexapp-topnav {
+	height: $topnav-height;
+	background: #EEE;
+	font-size: 20px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: center;
+
+	&.-inverse {
+		flex-direction: row-reverse;
+	}
+
+	// stuff
+	span, a {
+		padding: 0px 20px;
+	}
+}
