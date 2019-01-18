@@ -1,0 +1,24 @@
+@mixin form {
+	label {
+		display: block;
+	}
+
+	input.nexapp-input {
+		display: block;
+		width: 100%;
+		background: none;
+		border: none;
+		transition: all 0.3s;
+		border-bottom: 2px solid $color-light;
+		font-size: 1em;
+		margin: 5px 0px;
+
+		&:focus, &:active {
+			border-bottom: 2px solid $color-primary;
+		}
+	}
+
+	div.form-group {
+		margin-bottom: 20px;
+	}
+}

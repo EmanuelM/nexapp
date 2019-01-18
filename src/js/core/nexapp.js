@@ -5,7 +5,7 @@ class Nexapp {
 		// set panel methods
 		this.panel = {
 			open: function() {
-				$('.nextapp-sidepanel').removeClass('hidden');
+				$('.nexapp-sidepanel').removeClass('hidden');
 				setTimeout(function(){
 					$('body').addClass('sidepanel-visible');
 				}, 50);
@@ -18,7 +18,7 @@ class Nexapp {
 			close: function() {
 				$('body').removeClass('sidepanel-visible');
 				setTimeout(function() {
-					$('.nextapp-sidepanel').addClass('hidden');
+					$('.nexapp-sidepanel').addClass('hidden');
 				}, 350);
 			}
 		}
@@ -30,17 +30,17 @@ class Nexapp {
 			 * @param  {String}  text - text to display right to icon
 			 */
 			show: function(icon, text, secs) {
-				$('.nextapp-toast .toast-icon').html(icon);
-				$('.nextapp-toast .toast-text').text(text);
+				$('.nexapp-toast .toast-icon').html(icon);
+				$('.nexapp-toast .toast-text').text(text);
 
-				$('div.nextapp-toast').addClass('show');
+				$('div.nexapp-toast').addClass('show');
 				// hide timeout
 				App.toast.hide();
 			},
 			// hide a toast
 			hide: function(secs) {
 				setTimeout(function() {
-					$('div.nextapp-toast').removeClass('show');
+					$('div.nexapp-toast').removeClass('show');
 				}, (5000));
 			}
 		}
@@ -83,5 +83,14 @@ class Nexapp {
 			}
 		}
 		this.pages.load();
+		// loader
+		this.loader = {
+			show: function() {
+				$('.nexapp-loader').addClass('show');
+			},
+			hide: function() {
+				$('.nexapp-loader').removeClass('show');
+			},
+		}
 	}
 }

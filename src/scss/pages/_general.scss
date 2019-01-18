@@ -1,0 +1,58 @@
+*:focus {
+	outline: none;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+/**
+ * Data page settings
+ */
+div[data-page] {
+	margin-top: $topnav-height;
+	height: calc(100vh - $topnav-height);
+
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+// Hide anything
+.hidden {
+	display: none !important;
+}
+
+// Buttons
+a.btn, button.btn {
+	display: block;
+    text-align: center;
+    color: #FFF;
+    margin: 10px 0px;
+    background: none;
+    padding: 10px;
+    border-radius: 79px;
+	text-decoration: none;
+    border: 1px solid;
+
+    &:focus, &:active, &:hover, &:visited {
+    	text-decoration: none;
+    	color: #FFF;
+    }
+
+    &:hover, &:focus, &:active {
+    	background: #FFF;
+    	color: #000;
+    }
+}
+
+a.btn-primary, button.btn-primary {
+	background: $color-primary;
+	border: none;
+
+    &:hover, &:focus, &:active {
+        background: $color-gray;
+        color: $color-light;
+    }
+}

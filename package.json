@@ -1,7 +1,7 @@
 {
   "name": "nexapp",
   "version": "1.0.0",
-  "description": "Nexapp -- HTML/CSS/JS application simple template",
+  "description": "Nexapp -- Simple webapp template",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,12 +10,14 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "gulp": "^4.0.0",
-    "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
-    "gulp-sass": "^4.0.2",
-    "gulp-uglify": "^3.0.1"
+    "gulp-csso": "^3.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2"
   },
   "dependencies": {
+    "gulp-clean": "^0.4.0",
+    "gulp-minify": "^3.1.0",
     "npm": "^6.5.0"
   }
 }

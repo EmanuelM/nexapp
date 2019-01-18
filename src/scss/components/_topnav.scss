@@ -1,6 +1,8 @@
 div.nexapp-topnav {
+	background: $color-dark;
+	color: $color-light;
+
 	height: $topnav-height;
-	background: #EEE;
 	font-size: 20px;
 	position: fixed;
 	top: 0;
@@ -19,5 +21,10 @@ div.nexapp-topnav {
 	// stuff
 	span, a {
 		padding: 0px 20px;
+		color: $color-light;
+	}
+
+	a, a:hover, a:active, a:focus {
+		text-decoration: none;
 	}
 }

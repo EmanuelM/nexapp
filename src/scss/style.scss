@@ -5,6 +5,11 @@
 @import 'components/bottomnav';
 @import 'components/sidepanel';
 @import 'components/toast';
+@import 'components/form';
+@import 'components/loader';
 
 // Pages
 @import 'pages/general';
+@import 'pages/home';
+@import 'pages/login';
+@import 'pages/test';
