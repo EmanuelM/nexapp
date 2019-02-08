@@ -29,7 +29,7 @@ class Nexapp {
 			 * @param  {HTML}    icon - font-awesome with <i></i>
 			 * @param  {String}  text - text to display right to icon
 			 */
-			show: function(icon, text, secs) {
+			show: function(icon, text) {
 				$('.nexapp-toast .toast-icon').html(icon);
 				$('.nexapp-toast .toast-text').text(text);
 
@@ -38,10 +38,10 @@ class Nexapp {
 				App.toast.hide();
 			},
 			// hide a toast
-			hide: function(secs) {
+			hide: function() {
 				setTimeout(function() {
 					$('div.nexapp-toast').removeClass('show');
-				}, (5000));
+				}, 5*1000);
 			}
 		}
 		// pages
