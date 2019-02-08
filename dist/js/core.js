@@ -14,7 +14,7 @@
 
 
 (function() {
-  var CurrentHash, CurrentParameters, CurrentPath, CurrentTargetPath, Finch, HashInterval, HashListening, IgnoreObservables, LoadCompleted, NodeType, NullPath, Options, ParameterObservable, ParsedRouteString, PreviousParameters, RootNode, RouteNode, RoutePath, RouteSettings, SetupCalled, addRoute, arraysEqual, compact, console, contains, countSubstrings, diffObjects, endsWith, extend, findNearestCommonAncestor, findPath, getComponentName, getComponentType, getHash, hashChangeListener, isArray, isBoolean, isFunction, isNumber, isObject, isString, objectKeys, objectValues, objectsEqual, parseParameters, parseQueryString, parseRouteString, peek, resetGlobals, runObservables, setHash, splitUri, startsWith, step, stepLoad, stepSetup, stepTeardown, stepUnload, trim, trimSlashes, _ref,
+  var CurrentHash, CurrentParameters, CurrentPath, CurrentTargetPath, Finch, HashInterval, HashListening, IgnoreObservables, LoadCompleted, NodeType, NullPath, Options, ParameterObservable, ParsedRouteString, PreviousParameters, RootNode, RouteNode, RoutePath, RouteSettings, SetupCalled, addRoute, arraysEqual, compact, console, contains, countSubstrings, diffObjects, endsWith, extend, findNearestCommonAncestor, findPath, getComponentName, getComponentType, getHash, hashChangeListener, isArray, isBoolean, isFunction, isNumber, isObject, isString, objectKeys, objectValues, objectsEqual, parseParameters, parseQueryString, parseRouteString, peek, resetGlobals, runObservables, setHash, splitUri, startsWith, step, stepLoad, stepSetup, stepRemove, stepUnload, trim, trimSlashes, _ref,
     __slice = [].slice;
 
   isObject = function(object) {
@@ -225,12 +225,12 @@
 
   RouteSettings = (function() {
     function RouteSettings(_arg) {
-      var context, load, setup, teardown, unload, _ref1;
-      _ref1 = _arg != null ? _arg : {}, setup = _ref1.setup, teardown = _ref1.teardown, load = _ref1.load, unload = _ref1.unload, context = _ref1.context;
+      var context, load, setup, remove, unload, _ref1;
+      _ref1 = _arg != null ? _arg : {}, setup = _ref1.setup, remove = _ref1.remove, load = _ref1.load, unload = _ref1.unload, context = _ref1.context;
       this.setup = isFunction(setup) ? setup : (function() {});
       this.load = isFunction(load) ? load : (function() {});
       this.unload = isFunction(unload) ? unload : (function() {});
-      this.teardown = isFunction(teardown) ? teardown : (function() {});
+      this.remove = isFunction(remove) ? remove : (function() {});
       this.context = isObject(context) ? context : {};
     }
 
@@ -632,7 +632,7 @@
       if (CurrentPath.isEqual(ancestorPath)) {
         return stepSetup();
       } else {
-        return stepTeardown();
+        return stepRemove();
       }
     }
   };
@@ -718,25 +718,25 @@
     }
   };
 
-  stepTeardown = function() {
-    var bindings, context, recur, teardown, _ref1, _ref2;
+  stepRemove = function() {
+    var bindings, context, recur, remove, _ref1, _ref2;
     SetupCalled = false;
-    _ref2 = (_ref1 = CurrentPath.node.routeSettings) != null ? _ref1 : {}, context = _ref2.context, teardown = _ref2.teardown;
+    _ref2 = (_ref1 = CurrentPath.node.routeSettings) != null ? _ref1 : {}, context = _ref2.context, remove = _ref2.remove;
     if (context == null) {
       context = {};
     }
-    if (teardown == null) {
-      teardown = (function() {});
+    if (remove == null) {
+      remove = (function() {});
     }
     bindings = CurrentPath.getBindings();
     recur = function() {
       CurrentPath = CurrentPath.getParent();
       return step();
     };
-    if (teardown.length === 2) {
-      return teardown.call(context, bindings, recur);
+    if (remove.length === 2) {
+      return remove.call(context, bindings, recur);
     } else {
-      teardown.call(context, bindings);
+      remove.call(context, bindings);
       return recur();
     }
   };
@@ -1079,7 +1079,7 @@ class Nexapp {
 			 * @param  {HTML}    icon - font-awesome with <i></i>
 			 * @param  {String}  text - text to display right to icon
 			 */
-			show: function(icon, text, secs) {
+			show: function(icon, text) {
 				$('.nexapp-toast .toast-icon').html(icon);
 				$('.nexapp-toast .toast-text').text(text);
 
@@ -1088,10 +1088,10 @@ class Nexapp {
 				App.toast.hide();
 			},
 			// hide a toast
-			hide: function(secs) {
+			hide: function() {
 				setTimeout(function() {
 					$('div.nexapp-toast').removeClass('show');
-				}, (5000));
+				}, 5*1000);
 			}
 		}
 		// pages
