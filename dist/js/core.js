@@ -1052,6 +1052,7 @@ class Nexapp {
 	constructor(name, version) {
 		this.name    = name;
 		this.version = version;
+		var self = this;
 		// set panel methods
 		this.panel = {
 			open: function() {
@@ -1062,7 +1063,7 @@ class Nexapp {
 				// set listener in overlay
 				$('.sidepanel-overlay').off('click');
 				$('.sidepanel-overlay').on('click', function() {
-					App.panel.close();
+					self.panel.close();
 				});
 			},
 			close: function() {
@@ -1085,7 +1086,7 @@ class Nexapp {
 
 				$('div.nexapp-toast').addClass('show');
 				// hide timeout
-				App.toast.hide();
+				self.toast.hide();
 			},
 			// hide a toast
 			hide: function() {
@@ -1123,7 +1124,7 @@ class Nexapp {
 			  	$('[data-page]').hide();
 			  	$('[data-page="'+ page +'"]').show();
 
-			  	App.panel.close();
+			  	self.panel.close();
 			},
 			hide: function(page) {
 			  	$('[data-page="'+ page +'"]').hide();
