@@ -38,11 +38,10 @@ gulp.task('sass', function() {
 gulp.task('concat:core', function() {
 	return gulp
 		.src([
-				'./src/js/core/jquery.js',
 				'./src/js/core/router.js',
 				'./src/js/core/nexapp.js',
 			])
-		.pipe(concat('core.js'))
+		.pipe(concat('nexapp.js'))
 		.pipe(gulp.dest('./dist/js'));
 });
 // js -> general
@@ -70,7 +69,9 @@ gulp.task('minify:css', function() {
 // js
 gulp.task('minify:js', function() {
 	return gulp
-		.src('./dist/js/*.js')
+		.src([
+			'./dist/js/*.js',
+		])
 		.pipe(minify({
 			ext: {
 				min: '.min.js',
@@ -78,6 +79,16 @@ gulp.task('minify:js', function() {
 		}))
 		.pipe(gulp.dest('./dist/js'));
 });
+
+// Copy normals js to './dist/'
+gulp.task('copy:js', function() {
+	return gulp
+		.src([
+			'./src/js/*.js',
+			'./src/js/core/jquery.js',
+		])
+		.pipe(gulp.dest('./dist/js'));
+})
 
 /**
  * Watches
@@ -87,4 +98,4 @@ gulp.task('watch:sass', function() {
 		.watch('./src/scss/**/*.scss', gulp.series('sass'));
 });
 
-gulp.task('build', gulp.series('clean', 'sass', 'minify:css', 'concat:core', 'concat:app', 'minify:js'));
+gulp.task('build', gulp.series('clean', 'sass', 'minify:css', 'concat:core', 'minify:js', 'copy:js'));
