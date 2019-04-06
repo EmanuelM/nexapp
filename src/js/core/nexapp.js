@@ -5,6 +5,7 @@ class Nexapp {
 		var self = this;
 		// set panel methods
 		this.panel = {
+			/* open panel */
 			open: function() {
 				$('.nexapp-sidepanel').removeClass('hidden');
 				setTimeout(function(){
@@ -16,6 +17,7 @@ class Nexapp {
 					self.panel.close();
 				});
 			},
+			/* close the panel */
 			close: function() {
 				$('body').removeClass('sidepanel-visible');
 				setTimeout(function() {
@@ -26,7 +28,7 @@ class Nexapp {
 		// set toast methods
 		this.toast = {
 			/**
-			 * show a toast
+			 * Show a toast
 			 * @param  {HTML}    icon - font-awesome with <i></i>
 			 * @param  {String}  text - text to display right to icon
 			 */
@@ -38,16 +40,41 @@ class Nexapp {
 				// hide timeout
 				self.toast.hide();
 			},
-			// hide a toast
+			/* hide toast */
 			hide: function() {
 				setTimeout(function() {
-					$('div.nexapp-toast').removeClass('show');
+					$('div.nexapp-toast .modal-content').removeClass('show');
 				}, 5*1000);
+			}
+		}
+		// set modal methods
+		this.modal = {
+			/**
+			 * Show modal
+			 * @param  {String} title
+			 * @param  {HTML}   body
+			 * @param  {HTML}   footer
+			 */
+			show: function(title, body, footer) {
+				$('.nexapp-modal').css('display', 'block');
+				// sets
+				$('.nexapp-modal .modal-header h3').text(title);
+				$('.nexapp-modal .modal-body').html(body);
+				$('.nexapp-modal .modal-footer').html(footer);
+				// close listener
+				$('.nexapp-modal .modal-close').on('click', function() {
+					self.modal.hide();
+				})
+			},
+			/* Hide modal */
+			hide: function() {
+				$('.nexapp-modal').css('display', 'none');
+				$('.nexapp-modal .modal-close').off('click');
 			}
 		}
 		// pages
 		this.pages = {
-			// includes page files - synchronous
+			/* Includes page files - synchronous */
 			load: function() {
 			  	// get pages
 			  	$('page').each(function(index, page) {
@@ -70,25 +97,37 @@ class Nexapp {
 			  	$('[data-page]').hide();
 			  	$('[data-page=home]').show();
 			},
+			/**
+			 * Show a page
+			 * @param {String} page
+			 */
 			show: function(page) {
 			  	$('[data-page]').hide();
 			  	$('[data-page="'+ page +'"]').show();
 
 			  	self.panel.close();
 			},
+			/**
+			 * Hide a page
+			 * @param {String} page
+			 */
 			hide: function(page) {
 			  	$('[data-page="'+ page +'"]').hide();
 			},
+			/* Hide all pages */
 			hideAll: function() {
 			  	$('[data-page]').hide();
 			}
 		}
+		/* Load all pages in init by default */
 		this.pages.load();
 		// loader
 		this.loader = {
+			/* show loader */
 			show: function() {
 				$('.nexapp-loader').addClass('show');
 			},
+			/* hide loader */
 			hide: function() {
 				$('.nexapp-loader').removeClass('show');
 			},

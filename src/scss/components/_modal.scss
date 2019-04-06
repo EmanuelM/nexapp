@@ -1,0 +1,40 @@
+div.nexapp-modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+
+	div.modal-content {
+		background-color: #FFF;
+		margin: 15% auto;
+		border: 1px solid #888;
+		width: 75%;
+	  	padding: 20px;
+
+		div.modal-header {
+			display: flex;
+			justify-content: space-between;
+			padding: 10px 0px;
+			color: #000;
+			border-bottom: 1px solid #dadada;
+
+			h3 {
+				margin: 0;
+				padding: 0;
+			}
+		}
+
+		div.modal-body {
+			padding: 10px 0px;
+		}
+
+		div.modal-footer {
+			color: #000;
+		}
+	}
+}
