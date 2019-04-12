@@ -11,7 +11,7 @@ html, body {
 /**
  * Data page settings
  */
-div[data-page] {
+*[data-page] {
 	margin-top: $topnav-height;
 	height: calc(100vh - $topnav-height);
 
