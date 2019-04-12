@@ -1091,7 +1091,7 @@ class Nexapp {
 			/* hide toast */
 			hide: function() {
 				setTimeout(function() {
-					$('div.nexapp-toast .modal-content').removeClass('show');
+					$('div.nexapp-toast').removeClass('show');
 				}, 5*1000);
 			}
 		}
