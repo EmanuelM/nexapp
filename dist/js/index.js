@@ -16,7 +16,7 @@ $('a#test-toast').off('click');
 $('a#test-toast').on('click', function(event) {
 	event.preventDefault();
 	// set toast
-	App.toast.show("T", "I'm a toast :)");
+	App.toast.show("I'm a toast :)");
 });
 
 // loader

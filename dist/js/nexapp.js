@@ -1077,13 +1077,10 @@ class Nexapp {
 		this.toast = {
 			/**
 			 * Show a toast
-			 * @param  {HTML}    icon - font-awesome with <i></i>
-			 * @param  {String}  text - text to display right to icon
+			 * @param  {String} text - text to display
 			 */
-			show: function(icon, text) {
-				$('.nexapp-toast .toast-icon').html(icon);
+			show: function(text = '') {
 				$('.nexapp-toast .toast-text').text(text);
-
 				$('div.nexapp-toast').addClass('show');
 				// hide timeout
 				self.toast.hide();
@@ -1103,7 +1100,7 @@ class Nexapp {
 			 * @param  {HTML}   body
 			 * @param  {HTML}   footer
 			 */
-			show: function(title, body, footer) {
+			show: function(title = '', body = '', footer = '') {
 				$('.nexapp-modal').css('display', 'block');
 				// sets
 				$('.nexapp-modal .modal-header h3').text(title);
@@ -1149,7 +1146,7 @@ class Nexapp {
 			 * Show a page
 			 * @param {String} page
 			 */
-			show: function(page) {
+			show: function(page = '') {
 			  	$('[data-page]').hide();
 			  	$('[data-page="'+ page +'"]').show();
 
@@ -1159,7 +1156,7 @@ class Nexapp {
 			 * Hide a page
 			 * @param {String} page
 			 */
-			hide: function(page) {
+			hide: function(page = '') {
 			  	$('[data-page="'+ page +'"]').hide();
 			},
 			/* Hide all pages */
