@@ -89,9 +89,8 @@ To close the panel, 350ms of animation
 
 Bottom notification from multiple purpose
 
-`1. app.toast.show(icon, text)`
+`1. app.toast.show(text)`
 
-- **icon** _(html)_, left side icon/char
 - **text** _(string)_: text to display
 
 `2. app.toast.hide()`
